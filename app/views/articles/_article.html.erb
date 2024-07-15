@@ -1,11 +1,11 @@
 <div id="<%= dom_id article %>">
-  <p class="my-5">
-    <h1 class="font-bold text-2xl"><%= article.title %></h1>
-    <h1 class="text-1xl mt-2"><%= article.created_at.strftime("%Y-%m-%d") %></h1>
+  <p class="my-5 text-center">
+    <h1 class="font-bold text-2xl" style="color: #D30001;"><%= article.title %></h1>
+    <h1 class="text-1xl mt-2" style="font-weight: 700;"><%= article.created_at.strftime("%Y-%m-%d") %></h1>
   </p>
 
-  <p class="my-5 text-left">
-    <%= article.content %>
+  <p class="">
+    <%= simple_format article.content %>
   </p>
 
 </div>
