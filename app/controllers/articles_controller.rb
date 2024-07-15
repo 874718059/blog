@@ -3,7 +3,14 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.all
+    @tags = Tag.all
+    if params[:tag] == "All"
+      @articles = Article.all
+    elsif params[:tag] && @tag = Tag.find_by(name: params[:tag])
+      @articles = @tag.articles
+    else
+      @articles = Article.all
+    end
   end
 
   # GET /articles/1 or /articles/1.json
@@ -65,6 +72,6 @@ class ArticlesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def article_params
-      params.require(:article).permit(:title, :content)
+      params.require(:article).permit(:title, :content, :tag_id)
     end
 end

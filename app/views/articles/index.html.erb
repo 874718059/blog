@@ -2,6 +2,12 @@
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
+  <div style="display: flex;">
+    <div style="padding: 10px 20px;background-color: #c8c8c8;border-radius: 10px;margin-right: 10px"><%= link_to "All", articles_path(tag: "All") %></div>
+    <% @tags.each do |tag| %>
+      <div style="padding: 10px 20px;background-color: #c8c8c8;border-radius: 10px;margin-right: 10px"><%= link_to tag.name, articles_path(tag: tag.name) %></div>
+    <% end %>
+  </div>
 
   <% content_for :title, "Articles" %>
 
